@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
@@ -14,7 +15,7 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-g7ol2.mongodb.net/
     console.log({ message: 'Houve um erro ao se conectar: ' + err})
 });
 
-
+app.use(cors()); // libera a api para uso externo
 app.use(express.json()); // tem que vir antes das rotas
 app.use(routes);
 
